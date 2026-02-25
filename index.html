@@ -5,24 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KUM CAFFEE Menü</title>
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background-color: #2C1E16; /* Menünün arka planına uygun koyu bir renk */
+        :root {
+            --bg-color: #FAF6F0;
+            --text-main: #333333;
+            --accent-color: #8B5A2B;
+            --header-bg: #2C1E16;
         }
-        img { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            margin: 0 auto;
-            max-width: 600px; /* Tablet ve bilgisayarda çok devasa görünmemesi için */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
         }
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        h1 { margin: 0; font-size: 28px; letter-spacing: 3px; }
+        .subtitle { font-size: 12px; color: #D3B89B; margin-top: 5px; letter-spacing: 1px;}
+        .container { padding: 15px; max-width: 600px; margin: auto; }
+
+        /* Akordiyon Buton Stilleri */
+        .category-btn {
+            background-color: var(--header-bg);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.3s;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--accent-color);
+        }
+        /* Artı ve Eksi İkonları */
+        .category-btn::after {
+            content: '\002B';
+            font-size: 24px;
+            color: white;
+        }
+        .category-btn.active::after {
+            content: '\2212';
+        }
+
+        /* Açılır Panel Stilleri */
+        .panel {
+            padding: 0 15px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 8px 8px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .panel-inner { padding: 20px 0; }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+        .item-name { font-weight: bold; font-size: 15px; }
+        .item-price { color: var(--accent-color); font-weight: bold; font-size: 15px; white-space: nowrap; margin-left: 10px;}
+        .size-header { display: flex; justify-content: flex-end; font-size: 12px; color: #999; font-weight: bold; margin-bottom: 10px; }
+        .size-header span { margin-left: 20px; }
     </style>
 </head>
 <body>
-    <img src="1.jpg" alt="Menü Sayfa 1">
-    <img src="2.jpg" alt="Menü Sayfa 2">
-    <img src="3.jpg" alt="Menü Sayfa 3">
-    <img src="4.jpg" alt="Menü Sayfa 4">
+
+<header>
+    <h1>KUM CAFFEE</h1>
+    <div class="subtitle">kahve • taze meyve suyu • serin tatlar</div>
+</header>
+
+<div class="container">
+    
+    <button class="category-btn">Sıcak Kahveler</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="size-header"><span>8oz</span><span>12oz</span></div>
+            <div class="menu-item"><span class="item-name">Latte Macchiato</span><span class="item-price">₺135 / ₺145</span></div>
+            <div class="menu-item"><span class="item-name">Caramel Latte</span><span class="item-price">₺145 / ₺165</span></div>
+            <div class="menu-item"><span class="item-name">Mocha</span><span class="item-price">₺145 / ₺165</span></div>
+            <div class="menu-item"><span class="item-name">White Mocha</span><span class="item-price">₺145 / ₺165</span></div>
+            <div class="menu-item"><span class="item-name">Cappucino</span><span class="item-price">₺135 / ₺145</span></div>
+            <div class="menu-item"><span class="item-name">Americano</span><span class="item-price">₺105 / ₺115</span></div>
+            <div class="menu-item"><span class="item-name">Filtre Kahve</span><span class="item-price">₺100 / ₺110</span></div>
+            <div class="menu-item"><span class="item-name">Sahlep</span><span class="item-price">₺130 / ₺155</span></div>
+            <div class="menu-item"><span class="item-name">Hot Chocolate</span><span class="item-price">₺130 / ₺155</span></div>
+            <br>
+            <div class="menu-item"><span class="item-name">Flat White</span><span class="item-price">₺145</span></div>
+            <div class="menu-item"><span class="item-name">Espresso</span><span class="item-price">₺90</span></div>
+            <div class="menu-item"><span class="item-name">Espresso Double</span><span class="item-price">₺125</span></div>
+            <div class="menu-item"><span class="item-name">Türk Kahvesi</span><span class="item-price">₺110</span></div>
+            <div class="menu-item"><span class="item-name">Cortado</span><span class="item-price">₺145</span></div>
+            <div class="menu-item"><span class="item-name">Çay</span><span class="item-price">₺48</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Soğuk Kahveler (16oz)</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Ice Macchiato</span><span class="item-price">₺155</span></div>
+            <div class="menu-item"><span class="item-name">Ice Latte</span><span class="item-price">₺155</span></div>
+            <div class="menu-item"><span class="item-name">Ice Caramel Latte</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Ice Mocha</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Ice White Mocha</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Ice Americano</span><span class="item-price">₺125</span></div>
+            <div class="menu-item"><span class="item-name">Cold Brew</span><span class="item-price">₺138</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Limonatalar</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">El Yapımı Limonata</span><span class="item-price">₺110</span></div>
+            <div class="menu-item"><span class="item-name">El Yapımı Çilekli Limonata</span><span class="item-price">₺125</span></div>
+            <div class="menu-item"><span class="item-name">El Yapımı Elmalı Limonata</span><span class="item-price">₺125</span></div>
+            <div class="menu-item"><span class="item-name">El Yapımı Naneli Limonata</span><span class="item-price">₺115</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Organik İçecekler</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Portakal Suyu</span><span class="item-price">₺150</span></div>
+            <div class="menu-item"><span class="item-name">Tazeler 1 (portakal - nar)</span><span class="item-price">₺175</span></div>
+            <div class="menu-item"><span class="item-name">Tazeler 2 (elma, havuç, portakal)</span><span class="item-price">₺180</span></div>
+            <div class="menu-item"><span class="item-name">Tazeler 3 (armut, elma, havuç)</span><span class="item-price">₺180</span></div>
+            <div class="menu-item"><span class="item-name">Tazeler 4 (portakal, elma, armut)</span><span class="item-price">₺180</span></div>
+            <div class="menu-item"><span class="item-name">Detox 1 (elma, salatalık, roka, zencefil)</span><span class="item-price">₺195</span></div>
+            <div class="menu-item"><span class="item-name">Detox 2 (elma, havuç, maydanoz, zencefil)</span><span class="item-price">₺195</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Milkshakes (16oz)</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Çilekli Milkshake</span><span class="item-price">₺185</span></div>
+            <div class="menu-item"><span class="item-name">Oreolu Milkshake</span><span class="item-price">₺190</span></div>
+            <div class="menu-item"><span class="item-name">Çikolatalı Milkshake</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Beyaz Çikolatalı Milkshake</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Vanilyalı Milkshake</span><span class="item-price">₺165</span></div>
+            <div class="menu-item"><span class="item-name">Espressolu Milkshake</span><span class="item-price">₺210</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">El Yapımı Kokteyller</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Meyveli Ice Tea</span><span class="item-price">₺145</span></div>
+            <div class="menu-item"><span class="item-name">Limonlu Ice Tea</span><span class="item-price">₺140</span></div>
+            <div class="menu-item"><span class="item-name">Mojito</span><span class="item-price">₺120</span></div>
+            <div class="menu-item"><span class="item-name">Strawberry Mojito</span><span class="item-price">₺155</span></div>
+            <div class="menu-item"><span class="item-name">Berry Ice Cream</span><span class="item-price">₺180</span></div>
+            <div class="menu-item"><span class="item-name">Pistachio Matcha Latte</span><span class="item-price">₺215</span></div>
+            <div class="menu-item"><span class="item-name">Cool Lime</span><span class="item-price">₺125</span></div>
+            <div class="menu-item"><span class="item-name">Berry Hibiscus</span><span class="item-price">₺135</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Tatlılar</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Muzlu Magnolia 250cc</span><span class="item-price">₺135</span></div>
+            <div class="menu-item"><span class="item-name">Çilekli Magnolia 250cc</span><span class="item-price">₺135</span></div>
+            <div class="menu-item"><span class="item-name">Oreolu Magnolia 250cc</span><span class="item-price">₺135</span></div>
+            <div class="menu-item"><span class="item-name">Lotuslu Magnolia 250cc</span><span class="item-price">₺135</span></div>
+            <div class="menu-item"><span class="item-name">Spoonful 250cc</span><span class="item-price">₺140</span></div>
+            <div class="menu-item"><span class="item-name">Antep Fıstıklı Spoonful 250cc</span><span class="item-price">₺150</span></div>
+            <div class="menu-item"><span class="item-name">Tiramisu 250cc</span><span class="item-price">₺140</span></div>
+        </div>
+    </div>
+
+    <button class="category-btn">Special Tatlılar</button>
+    <div class="panel">
+        <div class="panel-inner">
+            <div class="menu-item"><span class="item-name">Beyaz Çikolatalı Browni 350cc</span><span class="item-price">₺195</span></div>
+            <div class="menu-item"><span class="item-name">San Sebastian 350cc</span><span class="item-price">₺195</span></div>
+            <div class="menu-item"><span class="item-name">Supangle 350cc</span><span class="item-price">₺210</span></div>
+            <div class="menu-item"><span class="item-name">Cream Puff</span><span class="item-price">₺195</span></div>
+            <div class="menu-item"><span class="item-name">Sütlü Profiterol</span><span class="item-price">₺210</span></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var acc = document.getElementsByClassName("category-btn");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
